@@ -1,0 +1,11 @@
+#!/bin/sh
+
+set -e
+
+update-alternatives --install /usr/bin/freecad-daily freecad-daily /usr/lib/freecad-daily/bin/freecad-python2 30 \
+                    --slave /usr/bin/freecadcmd-daily freecadcmd-daily /usr/lib/freecad-daily/bin/freecadcmd-python2 \
+                    --slave /usr/lib/freecad-daily/lib freecadlib-daily /usr/lib/freecad-daily-python2/lib
+
+#DEBHELPER#
+
+exit 0

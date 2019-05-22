@@ -1,0 +1,26 @@
+Description: Do not include binary examples excluded via d/copyright
+Author: Anton Gladky <gladk@debian.org>
+Last-Update: 2018-06-10
+
+--- a/data/CMakeLists.txt
++++ b/data/CMakeLists.txt
+@@ -1,9 +0,0 @@
+-add_subdirectory(examples)
+-
+-INSTALL(
+-    FILES
+-        License.txt
+-    DESTINATION
+-        ${CMAKE_INSTALL_DATADIR}
+-)
+-
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -1180,7 +1180,6 @@
+ #                   "(${CMAKE_SOURCE_DIR}). Please choose another build directory!")
+ #elseif()
+ add_subdirectory(src)
+-add_subdirectory(data)
+ #endif()
+ 
+ # ================================================================================

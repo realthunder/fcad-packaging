@@ -1,0 +1,12 @@
+Description: Don't try to read commented out test file which is causing a test loader failure
+Author: Kurt Kremitzki <kurt@kwk.systems>
+Last-Updated: 2019-04-27
+
+--- a/src/Mod/Fem/Init.py
++++ b/src/Mod/Fem/Init.py
+@@ -48,4 +48,4 @@
+     FreeCAD.addImportType("FEM result VTK (*.vtk *.vtu)", "feminout.importVTKResults")
+     FreeCAD.addExportType("FEM result VTK (*.vtk *.vtu)", "feminout.importVTKResults")
+ 
+-FreeCAD.__unit_test__ += ["TestFem"]
++# FreeCAD.__unit_test__ += ["TestFem"]

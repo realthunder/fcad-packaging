@@ -1,0 +1,10 @@
+# fix-fem-tests.patch
+# upstream-bugfixes.patch
+# set_about_freecad.patch
+fix_gcc8_ftbfs.patch
+fix_armel_FTBFS.patch
+fix-cmake-extra-license.patch
+# do_not_install_binary_examples.patch
+exclude_ply.patch
+disable_memory_check.patch
+remove_doc-files.patch

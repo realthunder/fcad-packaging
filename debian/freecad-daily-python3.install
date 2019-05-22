@@ -1,0 +1,3 @@
+#!/usr/bin/dh-exec
+usr/share/freecad-daily/bin/FreeCADCmd-Python3 => usr/lib/freecad-daily/bin/freecadcmd-python3
+usr/share/freecad-daily/bin/FreeCAD-Python3 => usr/lib/freecad-daily/bin/freecad-python3

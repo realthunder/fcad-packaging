@@ -1,0 +1,115 @@
+Description: Unreleased bugfixes from upcoming 0.18.2 point release:
+ fixes 0003913: libspnav crash on linux wayland during startup
+ Py3: fix reading/writing from/to OBJ file 
+ Py3 fix: correctly convert a Python str to const char*
+Author: Kurt Kremitzki <kurt@kwk.systems>
+Last-Updated: 2019-04-25
+
+--- a/src/App/ObjectIdentifier.cpp
++++ b/src/App/ObjectIdentifier.cpp
+@@ -1062,6 +1062,7 @@
+ 
+     destructor d1(pyvalue);
+ 
++    Base::PyGILStateLocker locker;
+     if (!pyvalue)
+         throw Base::RuntimeError("Failed to get property value.");
+ #if PY_MAJOR_VERSION < 3
+@@ -1078,12 +1079,12 @@
+         return boost::any(PyString_AsString(pyvalue));
+ #endif
+     else if (PyUnicode_Check(pyvalue)) {
++#if PY_MAJOR_VERSION >= 3
++        return boost::any(PyUnicode_AsUTF8(pyvalue));
++#else
+         PyObject * s = PyUnicode_AsUTF8String(pyvalue);
+         destructor d2(s);
+ 
+-#if PY_MAJOR_VERSION >= 3
+-        return boost::any(PyUnicode_AsUTF8(s));
+-#else
+         return boost::any(PyString_AsString(s));
+ #endif
+     }
+--- a/src/Gui/GuiApplicationNativeEventAware.cpp
++++ b/src/Gui/GuiApplicationNativeEventAware.cpp
+@@ -98,6 +98,12 @@
+     mainWindow = window;
+ 
+ #if defined(Q_OS_LINUX) && defined(SPNAV_FOUND)
++#if QT_VERSION >= 0x050200
++    if (!QX11Info::isPlatformX11()) {
++        Base::Console().Log("Application is not running on X11\n");
++        return;
++    }
++#endif
+     if (spnav_x11_open(QX11Info::display(), window->winId()) == -1) {
+         Base::Console().Log("Couldn't connect to spacenav daemon\n");
+     } else {
+--- a/src/Mod/Arch/importOBJ.py
++++ b/src/Mod/Arch/importOBJ.py
+@@ -195,7 +195,7 @@
+     outfile.close()
+     FreeCAD.Console.PrintMessage(translate("Arch","Successfully written") + " " + decode(filename) + "\n")
+     if materials: 
+-        outfile = pythonopen(filenamemtl,"wb")
++        outfile = pythonopen(filenamemtl,"w")
+         outfile.write("# FreeCAD v" + ver[0] + "." + ver[1] + " build" + ver[2] + " Arch module\n")
+         outfile.write("# http://www.freecadweb.org\n")
+         kinds = {"AmbientColor":"Ka ","DiffuseColor":"Kd ","SpecularColor":"Ks ","EmissiveColor":"Ke ","Transparency":"d "}
+@@ -219,23 +219,23 @@
+         FreeCAD.Console.PrintMessage(translate("Arch","Successfully written") + ' ' + decode(filenamemtl) + "\n")
+ 
+ 
+-def decode(name):
+-    "decodes encoded strings"
+-    try:
+-        decodedName = (name.decode("utf8"))
+-    except UnicodeDecodeError:
+-        try:
+-            decodedName = (name.decode("latin1"))
+-        except UnicodeDecodeError:
+-            FreeCAD.Console.PrintError(translate("Arch","Error: Couldn't determine character encoding"))
+-            decodedName = name
+-    return decodedName
++#def decode(name):
++#    "decodes encoded strings"
++#    try:
++#        decodedName = (name.decode("utf8"))
++#    except UnicodeDecodeError:
++#        try:
++#            decodedName = (name.decode("latin1"))
++#        except UnicodeDecodeError:
++#            FreeCAD.Console.PrintError(translate("Arch","Error: Couldn't determine character encoding"))
++#            decodedName = name
++#    return decodedName
+ 
+ def open(filename):
+     "called when freecad wants to open a file"
+-    docname = (os.path.splitext(os.path.basename(filename))[0]).encode("utf8")
+-    doc = FreeCAD.newDocument(docname)
+-    doc.Label = decode(docname)
++    docname = (os.path.splitext(os.path.basename(filename))[0])
++    doc = FreeCAD.newDocument(docname.encode("utf8"))
++    doc.Label = docname
+     return insert(filename,doc.Name)
+ 
+ def insert(filename,docname):
+@@ -246,7 +246,7 @@
+         doc = FreeCAD.newDocument(docname)
+     FreeCAD.ActiveDocument = doc
+ 
+-    with pythonopen(filename,"rb") as infile:
++    with pythonopen(filename,"r") as infile:
+         verts = []
+         facets = []
+         activeobject = None
+@@ -257,7 +257,7 @@
+             if line[:7] == "mtllib ":
+                 matlib = os.path.join(os.path.dirname(filename),line[7:])
+                 if os.path.exists(matlib):
+-                    with pythonopen(matlib,"rb") as matfile:
++                    with pythonopen(matlib,"r") as matfile:
+                         mname = None
+                         color = None
+                         trans = None

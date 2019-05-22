@@ -1,0 +1,8 @@
+freecad (0.18+dfsg1-1) unstable; urgency=low
+
+    FreeCAD is now available in Python 2 and Python 3 versions, with the
+    `freecad` metapackage defaulting to `freecad-python3`. If you want to use
+    the legacy Python 2 package, install `freecad-python2` and switch between
+    the versions using `sudo update-alternatives --config freecad`.
+
+ -- Kurt Kremitzki <kurt@kwk.systems>  Sun, 31 Mar 2019 01:58:53 -0500

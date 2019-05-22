@@ -1,0 +1,6 @@
+# False positives, hardening=+all is used
+hardening-no-fortify-functions
+hardening-no-bindnow
+
+# False positive for pcre3
+embedded-library
