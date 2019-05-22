@@ -1,3 +1,9 @@
+freecad-daily (0.19~private-1) unstable; urgency=medium
+
+  * Rename source name to satisfy dpkg-buildpackage
+
+ -- Zheng, Lei <realthunder.dev@gmail.com>  Wed, 22 May 2019 18:52:04 +0800
+
 freecad (0.19~pre1-1) unstable; urgency=medium
 
   * [9a9a461] Update for 0.19 daily builds
