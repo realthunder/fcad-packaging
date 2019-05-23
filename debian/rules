@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 %:
-	dh $@ --buildsystem=cmake --with python2
+	dh $@ --parallel --buildsystem=cmake --with python2
 
 DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
