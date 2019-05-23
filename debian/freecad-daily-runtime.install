@@ -478,11 +478,11 @@ usr/share/freecad-daily/Mod/Part/BOPTools/SplitAPI.py
 usr/share/freecad-daily/Mod/Part/BOPTools/ShapeMerge.py
 usr/share/freecad-daily/Mod/Part/BOPTools/GeneralFuseResult.py
 usr/share/freecad-daily/Mod/Part/BOPTools/SplitFeatures.py
-usr/share/freecad-daily/Ext/PySide/__init__.py
-usr/share/freecad-daily/Ext/PySide/QtGui.py
-usr/share/freecad-daily/Ext/PySide/QtSvg.py
-usr/share/freecad-daily/Ext/PySide/QtCore.py
-usr/share/freecad-daily/Ext/PySide/QtUiTools.py
+# usr/share/freecad-daily/Ext/PySide/__init__.py
+# usr/share/freecad-daily/Ext/PySide/QtGui.py
+# usr/share/freecad-daily/Ext/PySide/QtSvg.py
+# usr/share/freecad-daily/Ext/PySide/QtCore.py
+# usr/share/freecad-daily/Ext/PySide/QtUiTools.py
 usr/share/freecad-daily/Mod/Start/Init.py
 usr/share/freecad-daily/Mod/Start/InitGui.py
 usr/share/freecad-daily/Mod/Start/StartPage/__init__.py
