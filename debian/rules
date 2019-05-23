@@ -1,6 +1,6 @@
 #!/usr/bin/make -f
 %:
-	dh $@ --buildsystem=cmake --with python2,python3
+	dh $@ --buildsystem=cmake --with python2
 
 DEB_BUILD_GNU_TYPE  ?= $(shell dpkg-architecture -qDEB_BUILD_GNU_TYPE)
 DEB_HOST_MULTIARCH ?= $(shell dpkg-architecture -qDEB_HOST_MULTIARCH)
@@ -22,26 +22,16 @@ py2_flags = \
 -DPYTHON_CONFIG_SUFFIX="-python2.7.${DEB_HOST_MULTIARCH}" \
 -DCMAKE_INSTALL_LIBDIR="/usr/lib/freecad-daily-python2/lib"
 
-py3_flags = \
--DPYTHON_EXECUTABLE="/usr/bin/python3" \
--DCMAKE_INSTALL_LIBDIR="/usr/lib/freecad-daily-python3/lib"
-
 override_dh_auto_configure:
-	ls data/examples || /bin/true
 	dh_auto_configure --builddirectory=debian/build-py2 -- \
 	    $(extra_flags) \
 	    $(py2_flags)
-	dh_auto_configure --builddirectory=debian/build-py3 -- \
-	    $(extra_flags) \
-	    $(py3_flags)
 
 override_dh_auto_build:
 	dh_auto_build --builddirectory=debian/build-py2
-	dh_auto_build --builddirectory=debian/build-py3
 
 override_dh_auto_test:
 	dh_auto_test --builddirectory=debian/build-py2
-	dh_auto_test --builddirectory=debian/build-py3
 
 override_dh_auto_install:
 	dh_auto_install --builddirectory=debian/build-py2
@@ -49,11 +39,6 @@ override_dh_auto_install:
 	    debian/tmp/usr/share/freecad-daily/bin/FreeCADCmd-Python2
 	mv debian/tmp/usr/share/freecad-daily/bin/FreeCAD \
 	    debian/tmp/usr/share/freecad-daily/bin/FreeCAD-Python2
-	dh_auto_install --builddirectory=debian/build-py3
-	mv debian/tmp/usr/share/freecad-daily/bin/FreeCADCmd \
-	    debian/tmp/usr/share/freecad-daily/bin/FreeCADCmd-Python3
-	mv debian/tmp/usr/share/freecad-daily/bin/FreeCAD \
-	    debian/tmp/usr/share/freecad-daily/bin/FreeCAD-Python3
 
 override_dh_compress:
 	dh_compress -X.qch -X.qhc
