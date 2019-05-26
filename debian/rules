@@ -31,9 +31,11 @@ override_dh_auto_configure:
 	dh_auto_configure --builddirectory=debian/build-py2 -- \
 	    $(extra_flags) \
 	    $(py2_flags)
+	! test -f src/Build/Version.h || cp -f src/Build/Version.h debian/build-py2/src/Build
 	dh_auto_configure --builddirectory=debian/build-py3 -- \
 	    $(extra_flags) \
 	    $(py3_flags)
+	! test -f src/Build/Version.h || cp -f src/Build/Version.h debian/build-py3/src/Build
 
 override_dh_auto_build:
 	dh_auto_build --builddirectory=debian/build-py2
