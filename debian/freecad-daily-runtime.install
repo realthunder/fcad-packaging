@@ -135,6 +135,7 @@ usr/share/freecad-daily/Mod/Path/PathTests/TestPathCore.py
 usr/share/freecad-daily/Mod/Path/PathTests/PathTestUtils.py
 usr/share/freecad-daily/Mod/Path/PathTests/TestPathTooltable.py
 usr/share/freecad-daily/Mod/Path/PathScripts/PathToolController.py
+usr/share/freecad-daily/Mod/Path/PathScripts/PathToolControllerGui.py
 usr/share/freecad-daily/Mod/Path/PathScripts/PathSurface.py
 usr/share/freecad-daily/Mod/Path/PathScripts/PathSimpleCopy.py
 usr/share/freecad-daily/Mod/Path/PathScripts/PathCircularHoleBase.py
@@ -171,6 +172,7 @@ usr/share/freecad-daily/Mod/Path/PathScripts/PathProfileBaseGui.py
 usr/share/freecad-daily/Mod/Path/PathScripts/PathSurfaceGui.py
 usr/share/freecad-daily/Mod/Path/PathScripts/PathEngrave.py
 usr/share/freecad-daily/Mod/Path/PathScripts/PathUtils.py
+usr/share/freecad-daily/Mod/Path/PathScripts/PathUtilsGui.py
 usr/share/freecad-daily/Mod/Path/PathScripts/PathPocketShapeGui.py
 usr/share/freecad-daily/Mod/Path/PathScripts/PathCommands.py
 usr/share/freecad-daily/Mod/Path/PathScripts/PathSetupSheet.py
@@ -282,10 +284,16 @@ usr/share/freecad-daily/Mod/Arch/ArchRoof.py
 usr/share/freecad-daily/Mod/Arch/Dice3DS/util.py
 usr/share/freecad-daily/Mod/Arch/Dice3DS/__init__.py
 usr/share/freecad-daily/Mod/Arch/Dice3DS/dom3ds.py
-usr/share/freecad-daily/Mod/AddonManager/AddonManagerGui.py
+usr/share/freecad-daily/Mod/Arch/ArchFence.py
 usr/share/freecad-daily/Mod/AddonManager/Init.py
 usr/share/freecad-daily/Mod/AddonManager/InitGui.py
 usr/share/freecad-daily/Mod/AddonManager/AddonManager.py
+usr/share/freecad-daily/Mod/AddonManager/addonmanager_utilities.py
+usr/share/freecad-daily/Mod/AddonManager/addonmanager_macro.py
+usr/share/freecad-daily/Mod/AddonManager/addonmanager_workers.py
+usr/share/freecad-daily/Mod/AddonManager/AddonManager.ui
+usr/share/freecad-daily/Mod/AddonManager/AddonManagerOptions.ui
+usr/share/freecad-daily/Mod/AddonManager/AddonManager_rc.py
 usr/share/freecad-daily/Mod/Robot/MovieTool.py
 usr/share/freecad-daily/Mod/Robot/KukaExporter.py
 usr/share/freecad-daily/Mod/Robot/Init.py
@@ -309,6 +317,9 @@ usr/share/freecad-daily/Mod/Draft/importOCA.py
 usr/share/freecad-daily/Mod/Draft/importSVG.py
 usr/share/freecad-daily/Mod/Draft/DraftSnap.py
 usr/share/freecad-daily/Mod/Draft/Draft_rc.py
+usr/share/freecad-daily/Mod/Draft/getSVG.py
+usr/share/freecad-daily/Mod/Draft/DraftLayer.py
+usr/share/freecad-daily/Mod/Draft/DraftEdit.py
 usr/share/freecad-daily/Mod/Image/Init.py
 usr/share/freecad-daily/Mod/Image/InitGui.py
 usr/share/freecad-daily/Mod/Idf/Init.py
@@ -479,11 +490,6 @@ usr/share/freecad-daily/Mod/Part/BOPTools/SplitAPI.py
 usr/share/freecad-daily/Mod/Part/BOPTools/ShapeMerge.py
 usr/share/freecad-daily/Mod/Part/BOPTools/GeneralFuseResult.py
 usr/share/freecad-daily/Mod/Part/BOPTools/SplitFeatures.py
-# usr/share/freecad-daily/Ext/PySide/__init__.py
-# usr/share/freecad-daily/Ext/PySide/QtGui.py
-# usr/share/freecad-daily/Ext/PySide/QtSvg.py
-# usr/share/freecad-daily/Ext/PySide/QtCore.py
-# usr/share/freecad-daily/Ext/PySide/QtUiTools.py
 usr/share/freecad-daily/Mod/Start/Init.py
 usr/share/freecad-daily/Mod/Start/InitGui.py
 usr/share/freecad-daily/Mod/Start/StartPage/__init__.py
@@ -528,12 +534,9 @@ usr/share/freecad-daily/Mod/Path/PathScripts/PathDressupAxisMap.py
 usr/share/freecad-daily/Mod/Path/PathScripts/PathOpTools.py
 usr/share/freecad-daily/Mod/Path/PathScripts/PathSetupSheetOpPrototype.py
 usr/share/freecad-daily/Mod/Path/PathScripts/PathSetupSheetGui.py
-usr/share/freecad-daily/Mod/Path/PathScripts/post/grbl_G81_post.py
 usr/share/freecad-daily/Mod/Arch/ArchReference.py
 usr/share/freecad-daily/Mod/Test/TestPythonSyntax.py
 usr/share/freecad-daily/Mod/Arch/ArchBuildingPart.py
-usr/share/freecad-daily/Mod/AddonManager/addonmanager_utilities.py
-usr/share/freecad-daily/Mod/AddonManager/addonmanager_macro.py
 usr/share/freecad-daily/Mod/Draft/getSVG.py
 usr/share/freecad-daily/Mod/Image/ImageTools/_CommandImageScaling.py
 usr/share/freecad-daily/Mod/Image/ImageTools/__init__.py
